@@ -21,6 +21,19 @@ pub enum ShapeError {
         message: String,
     },
 
+    /// A pitch name did not reduce to a usable slug.
+    #[error("invalid pitch name '{0}': use letters, digits, and hyphens")]
+    InvalidPitchName(String),
+
+    /// A new pitch would overwrite an existing file.
+    #[error("pitch '{name}' already exists at {path}")]
+    PitchExists {
+        /// Pitch name (slug).
+        name: String,
+        /// Existing file path.
+        path: String,
+    },
+
     /// A command is recognized and its arguments parse, but it has no behavior
     /// implemented yet. The CLI surface is defined in `docs/PRODUCT.md`.
     #[error("`shape {command}` is not implemented yet — see docs/PRODUCT.md")]

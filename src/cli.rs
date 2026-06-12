@@ -89,6 +89,32 @@ pub enum Appetite {
     Big,
 }
 
+impl Appetite {
+    /// The value as written in pitch frontmatter (`small` / `big`).
+    pub fn as_str(self) -> &'static str {
+        match self {
+            Appetite::Small => "small",
+            Appetite::Big => "big",
+        }
+    }
+
+    /// Human-facing label for the appetite.
+    pub fn label(self) -> &'static str {
+        match self {
+            Appetite::Small => "Small Batch",
+            Appetite::Big => "Big Batch",
+        }
+    }
+
+    /// One-line description of what the appetite buys.
+    pub fn summary(self) -> &'static str {
+        match self {
+            Appetite::Small => "one scope, a single agent session",
+            Appetite::Big => "multiple scopes, possibly several sessions",
+        }
+    }
+}
+
 /// Arguments for the `pitch` command.
 #[derive(Args, Debug)]
 pub struct PitchArgs {
