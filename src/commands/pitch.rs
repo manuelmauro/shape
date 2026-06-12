@@ -28,9 +28,9 @@ fn new(args: &PitchNewArgs, cli: &Cli) -> Result<i32> {
         return Err(ShapeError::InvalidPitchName(args.name.clone()));
     }
 
-    let pitches_dir = workspace.join("pitches");
-    std::fs::create_dir_all(&pitches_dir)?;
-    let path = pitches_dir.join(format!("{slug}.md"));
+    let pitch_dir = workspace.join(workspace::PITCH_DIR);
+    std::fs::create_dir_all(&pitch_dir)?;
+    let path = pitch_dir.join(format!("{slug}.md"));
     if path.exists() {
         return Err(ShapeError::PitchExists {
             name: slug,

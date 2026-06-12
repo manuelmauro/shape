@@ -46,7 +46,7 @@ pub fn run(args: &BetArgs, cli: &Cli) -> Result<i32> {
         slice_accepted: false,
     };
 
-    let dir = ws.join("bets");
+    let dir = ws.join(workspace::BET_DIR);
     std::fs::create_dir_all(&dir)?;
     let path = dir.join(format!("{id}-{}.md", pitch.name));
     let body = format!(

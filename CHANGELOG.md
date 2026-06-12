@@ -12,7 +12,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Project scaffold for the `shape` CLI: clap-based command surface mirroring the
   Shape Up loop (shape → bet → build → ship), `thiserror` error type, and
   `.shaperc.toml` discovery.
-- `shape init` — scaffold a `.shape/` workspace (`pitches/`, `bets/`, `scopes/`,
+- `shape init` — scaffold a `.shape/` workspace (`pitch/`, `bet/`, `scope/`,
   `hill/`) and a `.shaperc.toml`.
 - `shape pitch new <name> [--appetite small|big]` — scaffold a pitch from the
   five-ingredient template (problem · appetite · solution · rabbit holes ·

@@ -26,7 +26,7 @@ full run.
 
 Establish the run state as files, then the verbs over it:
 
-- **Bet** `bets/<NNN>-<slug>.md` — frontmatter `id`, `pitch`, `appetite`,
+- **Bet** `bet/<NNN>-<slug>.md` — frontmatter `id`, `pitch`, `appetite`,
   `status` (active|building|shipped|stopped), `placed`, `budget {tokens,
   iterations, minutes}`, `slice_accepted`. The **active bet** is the one whose
   status is `active` or `building`.
@@ -38,7 +38,7 @@ Establish the run state as files, then the verbs over it:
 - `shape build [--spike]` — require an active bet, flip it to `building`, and
   print a kickoff brief (pitch + current scopes). The CLI is the referee; it
   emits the brief, it doesn't run the agent.
-- **Scope** `scopes/<bet-id>/<slug>.md` — frontmatter `name`, `bet`, `status`
+- **Scope** `scope/<bet-id>/<slug>.md` — frontmatter `name`, `bet`, `status`
   (todo|done), `hill` (0–100). Body is a free Markdown task checklist.
   - `scope add <name>` / `scope split <name>` — create a scope under the active
     bet (`split` is `add` framed as factoring work out).

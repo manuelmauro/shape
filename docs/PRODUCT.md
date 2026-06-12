@@ -197,11 +197,11 @@ Local-first and git-native: every artifact is a diffable text file the agent can
 ```
 .shape/
   config.toml              # appetite presets, default budgets, agent adapter(s)
-  pitches/
+  pitch/
     autopay.md             # frontmatter: state, appetite · body: 5 ingredients + breadboard
-  bets/
+  bet/
     001-autopay.md         # the placed bet: pitch ref, armed budget, gate history
-  scopes/
+  scope/
     autopay/
       pay-form-toggle.md   # tasks (must-have / ~nice-to-have), hill position, status
       disable-on-customer.md
@@ -272,7 +272,7 @@ $ shape pitch new autopay
   ◇ co-shaping "autopay" — drafting with your agent…
   ◇ agent: narrowed problem → "let payers auto-pay future invoices"
   ◇ agent: appetite proposed → Small Batch · breadboard drafted · 2 rabbit holes flagged
-  → review .shape/pitches/autopay.md
+  → review .shape/pitch/autopay.md
 
 $ shape derisk autopay
   ◇ agent (adversarial): "Does enabling Autopay also pay the current invoice?" → patched

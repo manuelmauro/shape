@@ -57,7 +57,7 @@ If there's no workspace yet and the `shape` binary is installed, run `shape init
 
 Run `shape --help` and `shape <command> --help` for the authoritative, currently-wired surface. The intended surface:
 
-- `shape init` — scaffold `.shape/` (`pitches/`, `bets/`, `scopes/`, `hill/`) and `.shaperc.toml`. *(works today)*
+- `shape init` — scaffold `.shape/` (`pitch/`, `bet/`, `scope/`, `hill/`) and `.shaperc.toml`. *(works today)*
 - `shape completions <shell>` — shell completions for bash, zsh, fish, PowerShell, elvish. *(works today)*
 - `shape pitch new|list|show|ready <name>` — co-shape and manage pitches.
 - `shape derisk <name>` — rabbit-hole / risk pass over a pitch.
@@ -80,9 +80,9 @@ When a command reports "not implemented yet", do the equivalent by editing the `
 
 The workspace is plain text under the resolved `dir` (default `.shape/`), so it's diffable and git-friendly:
 
-- `pitches/<name>.md` — a shaped pitch with five ingredients: **Problem** (a concrete story showing why the status quo fails — the baseline), **Appetite** (small or big, and why), **Solution** (rough — breadboards: a `Place`, affordances under it, `→` connections; or low-fidelity sketches), **Rabbit holes** (called-out risks and their patches), **No-gos** (explicitly excluded to fit the appetite). Rough and bounded, never a spec.
-- `bets/<id>-<name>.md` — a placed bet: the pitch committed to a run, with the armed budget. Human-owned.
-- `scopes/<bet>/<scope>.md` — an independently completable slice: a checklist of tasks (must-haves; `~` for nice-to-haves) plus the scope's hill position.
+- `pitch/<name>.md` — a shaped pitch with five ingredients: **Problem** (a concrete story showing why the status quo fails — the baseline), **Appetite** (small or big, and why), **Solution** (rough — breadboards: a `Place`, affordances under it, `→` connections; or low-fidelity sketches), **Rabbit holes** (called-out risks and their patches), **No-gos** (explicitly excluded to fit the appetite). Rough and bounded, never a spec.
+- `bet/<id>-<name>.md` — a placed bet: the pitch committed to a run, with the armed budget. Human-owned.
+- `scope/<bet>/<scope>.md` — an independently completable slice: a checklist of tasks (must-haves; `~` for nice-to-haves) plus the scope's hill position.
 - `hill/<bet>.jsonl` — append-only hill snapshots, so the human can see how the work is *moving*, not just where it is.
 
 ## Workflows
@@ -93,7 +93,7 @@ The workspace is plain text under the resolved `dir` (default `.shape/`), so it'
 2. Propose an appetite (small/big) and design only what fits inside it.
 3. Sketch the solution roughly — breadboard the flow (places, affordances, connections) rather than drawing pixels.
 4. Attack your own concept: list rabbit holes and patch or fence each one; mark the no-gos.
-5. Write `pitches/<name>.md` with all five ingredients, then say it's ready for review — don't self-mark it ready.
+5. Write `pitch/<name>.md` with all five ingredients, then say it's ready for review — don't self-mark it ready.
 
 **Build inside a bet**
 

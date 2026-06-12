@@ -23,7 +23,7 @@ over files that already exist; no new state model is needed.
 
 ## Solution
 
-Three subcommands reading the `pitches/*.md` frontmatter (`name`, `title`,
+Three subcommands reading the `pitch/*.md` frontmatter (`name`, `title`,
 `appetite`, `status`):
 
 - `pitch list` — one line per pitch: `STATUS  APPETITE  NAME  TITLE`. Headerless,

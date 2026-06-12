@@ -37,7 +37,7 @@ fn add(args: &ScopeRefArgs, cli: &Cli, split: bool) -> Result<i32> {
         return Err(ShapeError::InvalidScopeName(args.name.clone()));
     }
 
-    let dir = workspace::scopes_dir(&ws, &bet.id);
+    let dir = workspace::scope_dir(&ws, &bet.id);
     std::fs::create_dir_all(&dir)?;
     let path = dir.join(format!("{slug}.md"));
     if path.exists() {

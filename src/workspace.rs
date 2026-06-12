@@ -13,6 +13,17 @@ use serde::Serialize;
 use serde::de::DeserializeOwned;
 use std::path::{Path, PathBuf};
 
+/// Directory of shaped pitches.
+pub const PITCH_DIR: &str = "pitch";
+/// Directory of placed bets.
+pub const BET_DIR: &str = "bet";
+/// Directory of scopes, grouped by bet id.
+pub const SCOPE_DIR: &str = "scope";
+/// Directory of append-only hill-chart snapshot logs.
+pub const HILL_DIR: &str = "hill";
+/// Marker file present while the workspace is in cool-down.
+pub const COOLDOWN_FILE: &str = "cooldown";
+
 /// Resolve the workspace directory for this invocation (CLI flag, then
 /// `.shaperc.toml` discovery, then the `.shape` default).
 pub fn resolve(cli: &Cli) -> Result<PathBuf> {
@@ -187,7 +198,7 @@ fn list_md(dir: &Path) -> Result<Vec<PathBuf>> {
 
 /// All pitches, sorted by path.
 pub fn list_pitches(ws: &Path) -> Result<Vec<(PathBuf, Pitch)>> {
-    list_md(&ws.join("pitches"))?
+    list_md(&ws.join(PITCH_DIR))?
         .into_iter()
         .map(|path| load::<Pitch>(&path).map(|fm| (path, fm)))
         .collect()
@@ -196,7 +207,7 @@ pub fn list_pitches(ws: &Path) -> Result<Vec<(PathBuf, Pitch)>> {
 /// Find a pitch by name (slugified), returning its path and frontmatter.
 pub fn find_pitch(ws: &Path, name: &str) -> Result<(PathBuf, Pitch)> {
     let slug = slugify(name);
-    let path = ws.join("pitches").join(format!("{slug}.md"));
+    let path = ws.join(PITCH_DIR).join(format!("{slug}.md"));
     if !path.is_file() {
         return Err(ShapeError::NotFound {
             kind: "pitch",
@@ -209,7 +220,7 @@ pub fn find_pitch(ws: &Path, name: &str) -> Result<(PathBuf, Pitch)> {
 
 /// All bets, sorted by path (i.e. by id).
 pub fn list_bets(ws: &Path) -> Result<Vec<(PathBuf, Bet)>> {
-    list_md(&ws.join("bets"))?
+    list_md(&ws.join(BET_DIR))?
         .into_iter()
         .map(|path| load::<Bet>(&path).map(|fm| (path, fm)))
         .collect()
@@ -233,13 +244,13 @@ pub fn next_bet_id(ws: &Path) -> Result<String> {
 }
 
 /// Directory holding a bet's scopes.
-pub fn scopes_dir(ws: &Path, bet_id: &str) -> PathBuf {
-    ws.join("scopes").join(bet_id)
+pub fn scope_dir(ws: &Path, bet_id: &str) -> PathBuf {
+    ws.join(SCOPE_DIR).join(bet_id)
 }
 
 /// All scopes of a bet, sorted by path.
 pub fn list_scopes(ws: &Path, bet_id: &str) -> Result<Vec<(PathBuf, Scope)>> {
-    list_md(&scopes_dir(ws, bet_id))?
+    list_md(&scope_dir(ws, bet_id))?
         .into_iter()
         .map(|path| load::<Scope>(&path).map(|fm| (path, fm)))
         .collect()
@@ -248,7 +259,7 @@ pub fn list_scopes(ws: &Path, bet_id: &str) -> Result<Vec<(PathBuf, Scope)>> {
 /// Find a scope of a bet by name (slugified).
 pub fn find_scope(ws: &Path, bet_id: &str, name: &str) -> Result<(PathBuf, Scope)> {
     let slug = slugify(name);
-    let path = scopes_dir(ws, bet_id).join(format!("{slug}.md"));
+    let path = scope_dir(ws, bet_id).join(format!("{slug}.md"));
     if !path.is_file() {
         return Err(ShapeError::NotFound {
             kind: "scope",
@@ -261,12 +272,12 @@ pub fn find_scope(ws: &Path, bet_id: &str, name: &str) -> Result<(PathBuf, Scope
 
 /// Append-only hill-chart snapshot log for a bet.
 pub fn hill_log_path(ws: &Path, bet_id: &str) -> PathBuf {
-    ws.join("hill").join(format!("{bet_id}.jsonl"))
+    ws.join(HILL_DIR).join(format!("{bet_id}.jsonl"))
 }
 
 /// Marker file present while the workspace is in cool-down.
 pub fn cooldown_path(ws: &Path) -> PathBuf {
-    ws.join("cooldown")
+    ws.join(COOLDOWN_FILE)
 }
 
 /// Phase label for a hill position: `uphill` (figuring out), `downhill`
