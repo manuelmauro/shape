@@ -84,6 +84,10 @@ pub enum ShapeError {
         name: String,
     },
 
+    /// A scope name did not reduce to a usable slug.
+    #[error("invalid scope name '{0}': use letters, digits, and hyphens")]
+    InvalidScopeName(String),
+
     /// Tried to accept "done" while scopes remain unfinished.
     #[error("{count} scope(s) still todo — finish them before accepting done")]
     ScopesIncomplete {

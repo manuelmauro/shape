@@ -167,9 +167,10 @@ pub struct BetArgs {
     /// Pitch name to bet on.
     pub name: String,
 
-    /// Appetite (sets the default budget caps).
-    #[arg(long, value_enum, default_value = "small")]
-    pub appetite: Appetite,
+    /// Appetite (sets the default budget caps). Defaults to the pitch's own
+    /// appetite.
+    #[arg(long, value_enum)]
+    pub appetite: Option<Appetite>,
 
     /// Override the token ceiling for the circuit breaker.
     #[arg(long)]
