@@ -1,0 +1,18 @@
+/target
+
+# macOS
+.DS_Store
+
+# Agent / AI assistant config (keep top-level skills/ tracked)
+.claude/
+.pi/
+.cursor/
+.cursorrules
+.aider*
+.windsurf/
+.windsurfrules
+.continue/
+.codeium/
+.gemini/
+.opencode/
+.github/copilot-instructions.md
