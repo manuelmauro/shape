@@ -269,6 +269,18 @@ pub fn cooldown_path(ws: &Path) -> PathBuf {
     ws.join("cooldown")
 }
 
+/// Phase label for a hill position: `uphill` (figuring out), `downhill`
+/// (executing), or `done`.
+pub fn hill_phase(position: u8) -> &'static str {
+    if position >= 100 {
+        "done"
+    } else if position >= 50 {
+        "downhill"
+    } else {
+        "uphill"
+    }
+}
+
 #[cfg(test)]
 mod tests {
     use super::*;
