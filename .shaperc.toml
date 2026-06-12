@@ -1,0 +1,3 @@
+# shape workspace configuration.
+# `dir` is the workspace directory, resolved relative to this file.
+dir = ".shape"
