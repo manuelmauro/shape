@@ -2,5 +2,25 @@
 name = "shape"
 version = "0.1.0"
 edition = "2024"
+rust-version = "1.85"
+description = "Shape Up for AI-agent-assisted software development — a local-first, agent-agnostic CLI"
+license = "MIT OR Apache-2.0"
+keywords = ["shape-up", "ai-agents", "llm", "workflow", "cli"]
+categories = ["command-line-utilities", "development-tools"]
+repository = "https://github.com/manuelmauro/shape"
+homepage = "https://github.com/manuelmauro/shape"
+readme = "README.md"
 
 [dependencies]
+chrono = { version = "0.4", default-features = false, features = ["clock"] }
+clap = { version = "4", features = ["derive", "env", "wrap_help"] }
+clap_complete = "4"
+colored = "3"
+serde = { version = "1", features = ["derive"] }
+serde_json = "1"
+serde_yaml = "0.9"
+thiserror = "2"
+toml = "0.8"
+
+[dev-dependencies]
+tempfile = "3"
