@@ -10,7 +10,7 @@ The human stays the judge. The AI co-pilots every phase — drafting pitches, hu
 
 > Shape Up exists to manage the risk of not shipping on time. That same apparatus maps almost 1:1 onto the failure modes of unsupervised agents — over-building, wandering into rabbit holes, losing the plot, and silently looping. See [`docs/PRODUCT.md`](docs/PRODUCT.md) for the full design and [`docs/shapeup/`](docs/shapeup/README.md) for the book.
 
-> **Status:** early scaffold. `init` and `completions` work today; the rest of the command surface is wired up and returns a clear "not implemented yet" pending build-out.
+> **Status:** v0.1 — the full Shape Up loop runs end to end (shape → bet → build → ship). `shape` was built by dogfooding itself: the [`.shape/`](.shape) workspace in this repo holds the pitches, bets, and scopes that drove its development.
 
 ## Installation
 
